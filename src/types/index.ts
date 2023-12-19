@@ -55,14 +55,22 @@ export interface OptionProps {
 export interface CustomFilterProps {
   title: string;
   options: OptionProps[];
+  // filter: string;
+  // setYear: (year: number) => void
+  setFilter: (filter: string) => void;
 }
 
 export interface ShowMoreProps {
   pageNumber: number;
   isNext: boolean;
+  setLimit: (value: number) => void;
 }
 
 export interface SearchManuFacturerProps {
-  manufacturer: string;
-  setManuFacturer: (manufacturer: string) => void; //a function that takes in manufacturer as a string and does not return anything
+  // manufacturer: string;
+  setManufacturer: (manufacturer: string) => void; //a function that takes in manufacturer as a string and does not return anything
+  selected: string;
+  setSelected: (selected: string) => void;
+  model: string;
+  setModel: (model: string) => void;
 }

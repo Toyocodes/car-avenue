@@ -17,7 +17,7 @@ export default function Home() {
 
   //filter states
   const [fuel, setFuel] = useState("")
-  const [year, setYear] = useState(2022 )
+  const [year, setYear] = useState(2022)
 
   //pagination states
   const [limit, setLimit] = useState(10)
@@ -97,7 +97,7 @@ export default function Home() {
         ) : (
           <div className='home__error-container'>
             <h2 className='text-black text-xl font-bold'>Oops, no results</h2>
-            <p>{allCars?.message}</p>
+            {/* <p>{allCars?.message}</p> */}
           </div>
         )}
 

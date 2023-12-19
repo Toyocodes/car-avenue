@@ -2,11 +2,11 @@
 
 import {Fragment, useState} from 'react'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 import { Listbox, Transition } from "@headlessui/react";
 
 import { CustomFilterProps } from "@/types";
-import {updateSearchParams} from "../../utils";
+// import {updateSearchParams} from "../../utils";
 
 const  CustomFilter = ({ title, options, setFilter}: CustomFilterProps) => {
 
