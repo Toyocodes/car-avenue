@@ -40,10 +40,11 @@ export default function Home() {
     }
   }
   
-  useEffect(() => {
-    console.log(fuel,year, limit, manufacturer, model)
-    getCars()
-  }, [fuel, year, limit, manufacturer, model])
+useEffect(() => {
+  console.log(fuel, year, limit, manufacturer, model);
+  getCars();
+}, [fuel, year, limit, manufacturer, model, getCars]);
+
   
 
 
@@ -72,7 +73,7 @@ export default function Home() {
           <section>
             <div className='home__cars-wrapper'>
               {allCars?.map((car) => (
-                <CarCard car={car} />
+                <CarCard car={car} key={car} />
               ))}
             </div>
 
