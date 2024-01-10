@@ -120,4 +120,4 @@ const filteredManufacturers =
   )
 }
 
-export default SearchManufacturer
+export default SearchManufacturer 

@@ -20,14 +20,17 @@ export async function fetchCars(filters:FilterProps){
     const {manufacturer, year, model, limit, fuel} = filters;
 
     const headers = {
-    'X-RapidAPI-Key': '461be2f774msh09532f645d475a9p1215d9jsn0f0d022fd77e',
-    'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
+      // 'X-RapidAPI-Key': '4a0ca42bf0mshadfa7637e27e9b7p1e12acjsn12d660cfc607',
+      "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_API_KEY || "",
+      'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
        
     }
-    const response = await fetch(`https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`, 
-    {
+    const response = await fetch(
+      `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`,
+      {
         headers: headers,
-    })
+      }
+    );
 
     const result = await response.json()
 
@@ -51,15 +54,15 @@ export const generateCarImageUrl = (car: CarProps, angle?: string) => {
   } 
 
 
-  export const updateSearchParams = (type: string, value: string) => {
-    // Get the current URL search params
-    const searchParams = new URLSearchParams(window.location.search);
+  // export const updateSearchParams = (type: string, value: string) => {
+  //   // Get the current URL search params
+  //   const searchParams = new URLSearchParams(window.location.search);
   
-    // Set the specified search parameter to the given value
-    searchParams.set(type, value);
+  //   // Set the specified search parameter to the given value
+  //   searchParams.set(type, value);
   
-    // Set the specified search parameter to the given value
-    const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
+  //   // Set the specified search parameter to the given value
+  //   const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
   
-    return newPathname;
-  };
+  //   return newPathname;
+  // };

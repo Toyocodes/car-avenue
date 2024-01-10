@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Hero, CustomFilter, SearchBar, CarCard, ShowMore} from "@/components";
 import { fetchCars } from "../../utils";
 import { fuels, yearsOfProduction } from "@/constants";
@@ -17,12 +17,12 @@ export default function Home() {
 
   //filter states
   const [fuel, setFuel] = useState("")
-  const [year, setYear] = useState(2022)
+  const [year, setYear] = useState(2022 )
 
   //pagination states
   const [limit, setLimit] = useState(10)
 
-  const getCars = async() =>{
+  const getCars = useCallback(async () => {
     setLoading(true);
     try {
       const result = await fetchCars({
@@ -31,20 +31,21 @@ export default function Home() {
         fuel: fuel || "",
         limit: limit || 10,
         model: model || "",
-      })
+      });
       setAllCars(result);
     } catch (error) {
-      console.log(error)
-    }finally{
+      console.log(error);
+    } finally {
       setLoading(false);
     }
-  }
-  
-useEffect(() => {
-  console.log(fuel, year, limit, manufacturer, model);
-  getCars();
-}, [fuel, year, limit, manufacturer, model, getCars]);
+  }, [manufacturer, model, fuel, year, limit]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      await getCars();
+    };
+    fetchData();
+  }, [getCars]);
   
 
 
@@ -72,8 +73,8 @@ useEffect(() => {
          {allCars.length > 0 ? (
           <section>
             <div className='home__cars-wrapper'>
-              {allCars?.map((car) => (
-                <CarCard car={car} key={car} />
+              {allCars?.map((car, index) => (
+                <CarCard key={index} car={car}/>
               ))}
             </div>
 

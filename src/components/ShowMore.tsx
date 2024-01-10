@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 
 import { ShowMoreProps } from "@/types";
-import { updateSearchParams } from "../../utils";
+// import { updateSearchParams } from "../../utils";
 import { CustomButton } from "@/components";
 
 const ShowMore = ({ pageNumber, isNext, setLimit }: ShowMoreProps) => {
